@@ -2,7 +2,7 @@
 
 
 namespace CSharp_lab2.Models {
-  internal class SignModel {
+  internal class Person {
     private DateTime _birthDate = DateTime.Today;
     private String _easternSign;
     private String _westernSign;

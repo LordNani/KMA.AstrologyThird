@@ -10,6 +10,7 @@
 using CSharp_lab2.ViewModels;
 namespace CSharp_lab2
 {
+    
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>

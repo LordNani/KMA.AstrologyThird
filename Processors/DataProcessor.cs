@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Threading;
+using System.Net.Mail;
 namespace CSharp_lab2.Processors
 {
   class DataProcessor
@@ -8,6 +9,17 @@ namespace CSharp_lab2.Processors
     private String[] eastSignArr = { "Monkey", "Rooster", "Dog",   "Pig",
                                      "Rat",    "Bull",    "Tiger", "Rabbit",
                                      "Dragon", "Snake",   "Horse", "Goat" };
+
+    public bool IsValid(string emailaddress)
+    {
+      try {
+        MailAddress m = new MailAddress(emailaddress);
+
+        return true;
+      } catch (FormatException) {
+        return false;
+      }
+    }
     public int calculateAge(DateTime dateOfBirth)
     {
 #if DEBUG
@@ -22,10 +34,8 @@ namespace CSharp_lab2.Processors
       if (DateTime.Today.DayOfYear < dateOfBirth.DayOfYear)
         age--;
       if (age > 135 || age < 0) {
-                MessageBox.Show("Wrong Age! ",
-                        "Oops!",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Error);
+        MessageBox.Show(
+          "Wrong Age! ", "Oops!", MessageBoxButton.OK, MessageBoxImage.Error);
         return -1;
       }
       return age;
