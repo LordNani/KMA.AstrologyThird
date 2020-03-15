@@ -14,10 +14,9 @@ namespace CSharp_lab2.ViewModels
 #region Fleids
     private Person _model = new Person();
     private DateTime _pickedDate = DateTime.Today;
-    private String _name = "";
-    private String _surname = "";
-    private String _email = "";
+    private String _isBirthday = "";
     private String _dateToDisplay = "";
+
     private bool _isProgressBarVisible = false;
     private bool _fieldsEnabled = true;
     private DataProcessor _processor = new DataProcessor();
@@ -51,18 +50,21 @@ namespace CSharp_lab2.ViewModels
       set
       {
         _pickedDate = value;
-        OnPropertyChanged("BirthDate");
+        OnPropertyChanged();
       }
+    }
+    public String IsBirthday
+    {
+      get { return _isBirthday; }
+      set { _isBirthday = value;
+                OnPropertyChanged();
+            }
     }
 
     public String Email
     {
-      get { return _email; }
-      set
-      {
-        _email = value;
-        OnPropertyChanged("BirthDate");
-      }
+      get { return _model.Email; }
+      set { _model.Email = value; }
     }
     public String DateBirthDisplay
     {
@@ -75,23 +77,15 @@ namespace CSharp_lab2.ViewModels
     }
     public String Name
     {
-      get { return _name; }
-      set
-      {
-        _name = value;
-        OnPropertyChanged("BirthDate");
-      }
+      get { return _model.Name; }
+      set { _model.Name = value; }
     }
     public String Surname
     {
-      get { return _surname; }
-      set
-      {
-        _surname = value;
-        OnPropertyChanged("BirthDate");
-      }
+      get { return _model.Surname; }
+      set { _model.Surname = value; }
     }
-    public int Age
+    public String Age
     {
       get { return _model.Age; }
       set
@@ -139,16 +133,25 @@ namespace CSharp_lab2.ViewModels
     {
       IsProgressBarVisible = true;
       FieldsEnabled = false;
-       
+
       int userAge = await Task.Run(() => _processor.calculateAge(BirthDate));
 
       if (userAge != -1 && _processor.IsValid(Email)) {
-        Age = userAge;
+                //TODO exception and isValidAge
+        Age = userAge.ToString();
         WesternSign =
           await Task.Run(() => _processor.calculateSignWest(BirthDate));
         EasternSign =
           await Task.Run(() => _processor.calculateSignEast(BirthDate));
         DateBirthDisplay = BirthDate.ToShortDateString();
+        OnPropertyChanged("Email");
+        OnPropertyChanged("Name");
+        OnPropertyChanged("Surname");
+                if (DateTime.Today.DayOfYear == BirthDate.DayOfYear)
+                    IsBirthday = "Yes";
+                else
+                    IsBirthday = "No";
+        
       }
       IsProgressBarVisible = false;
       FieldsEnabled = true;
@@ -156,7 +159,9 @@ namespace CSharp_lab2.ViewModels
 
     public bool CanExecuteCommand(object o)
     {
-      return !(_pickedDate.Equals(null));
+      return !string.IsNullOrWhiteSpace(Name) &&
+             !string.IsNullOrWhiteSpace(Surname) &&
+             !string.IsNullOrWhiteSpace(Email);
     }
 
 #region INotifyPropertyImplementation

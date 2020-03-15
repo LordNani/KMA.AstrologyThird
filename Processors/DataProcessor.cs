@@ -17,7 +17,9 @@ namespace CSharp_lab2.Processors
 
         return true;
       } catch (FormatException) {
-        return false;
+                MessageBox.Show(
+  "Wrong e-mail!", "Oops!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
       }
     }
     public int calculateAge(DateTime dateOfBirth)
