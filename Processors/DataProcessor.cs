@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Threading;
 using System.Net.Mail;
+using CSharp_lab2.DataException;
 namespace CSharp_lab2.Processors
 {
   class DataProcessor
@@ -17,9 +18,9 @@ namespace CSharp_lab2.Processors
 
         return true;
       } catch (FormatException) {
-                MessageBox.Show(
-  "Wrong e-mail!", "Oops!", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
+        MessageBox.Show(
+          "Wrong e-mail!", "Oops!", MessageBoxButton.OK, MessageBoxImage.Error);
+        return false;
       }
     }
     public int calculateAge(DateTime dateOfBirth)
@@ -35,11 +36,21 @@ namespace CSharp_lab2.Processors
       int age = DateTime.Today.Year - dateOfBirth.Year;
       if (DateTime.Today.DayOfYear < dateOfBirth.DayOfYear)
         age--;
-      if (age > 135 || age < 0) {
-        MessageBox.Show(
-          "Wrong Age! ", "Oops!", MessageBoxButton.OK, MessageBoxImage.Error);
+
+      try {
+        validateAge(age);
+      } catch (Exception e) {
+        if (e is AgeExceededException)
+          MessageBox.Show(
+            e.Message, "Oops!", MessageBoxButton.OK, MessageBoxImage.Error);
+        else if (e is AgeFutureException)
+          MessageBox.Show("Sorry, but your age needs to be above 0 :)",
+                          "Oops!",
+                          MessageBoxButton.OK,
+                          MessageBoxImage.Error);
         return -1;
       }
+
       return age;
     }
 
@@ -52,6 +63,15 @@ namespace CSharp_lab2.Processors
       return result;
     }
 
+    public void validateAge(int age)
+    {
+      if (age > 135)
+        throw new DataException.AgeExceededException(
+          $"Age limit exceeded. Given age: {age}", age);
+      else if (age < 0)
+        throw new DataException.AgeFutureException(
+          $"This person haven't born yet");
+    }
     public String calculateSignWest(DateTime dateOfBirth)
     {
       String result = "";

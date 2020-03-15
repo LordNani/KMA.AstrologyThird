@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Exception\DataException.cs" />
     <Compile Include="Processors\DataProcessor.cs" />
     <Compile Include="Tools\RelayCommand.cs" />
     <Compile Include="ViewModels\SignViewModel.cs" />
