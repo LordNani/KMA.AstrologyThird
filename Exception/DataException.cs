@@ -3,7 +3,7 @@
 
 namespace CSharp_lab2.DataException
 {
-  class AgeExceededException : ArgumentException
+    class AgeExceededException : ArgumentException
   {
     public int Value { get; }
     public AgeExceededException(string message, int val)

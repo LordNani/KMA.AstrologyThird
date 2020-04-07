@@ -11,9 +11,6 @@
     mc:Ignorable="d">
 
     <Grid>
-        <Grid.Resources>
-            <BooleanToVisibilityConverter x:Key="BoolToVis" />
-        </Grid.Resources>
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
             <RowDefinition Height="40" />
@@ -32,6 +29,15 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+
+        <ContentControl Name="_contentControl" IsEnabled="{Binding IsControlEnabled, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+        <ProgressBar
+            Grid.ColumnSpan="4"
+            Height="20"
+            VerticalAlignment="Top"
+            IsIndeterminate="True"
+            Visibility="{Binding LoaderVisibility, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />
+
         <Separator
             Grid.RowSpan="8"
             Grid.Column="1"
@@ -41,12 +47,6 @@
                 <RotateTransform Angle="90" />
             </Separator.LayoutTransform>
         </Separator>
-        <ProgressBar
-            Grid.ColumnSpan="4"
-            Height="20"
-            VerticalAlignment="Top"
-            IsIndeterminate="True"
-            Visibility="{Binding IsProgressBarVisible, Converter={StaticResource BoolToVis}}" />
         <TextBlock
             Grid.Row="3"
             Grid.Column="0"

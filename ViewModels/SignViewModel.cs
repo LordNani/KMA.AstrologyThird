@@ -9,7 +9,7 @@ using CSharp_lab2.Processors;
 namespace CSharp_lab2.ViewModels
 {
 
-  internal class SignViewModel : INotifyPropertyChanged
+  internal class SignViewModel : BaseViewModel
   {
 #region Fleids
     private Person _model = new Person();
@@ -164,15 +164,5 @@ namespace CSharp_lab2.ViewModels
              !string.IsNullOrWhiteSpace(Email);
     }
 
-#region INotifyPropertyImplementation
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    //[NotifyPropertyChangedInvocator]
-    protected virtual void OnPropertyChanged(
-      [ CallerMemberName ] string propertyName = null)
-    {
-      PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-#endregion
   }
 }
