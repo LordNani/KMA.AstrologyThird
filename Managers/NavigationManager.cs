@@ -1,4 +1,5 @@
-﻿
+﻿using CSharp_lab2.Navigation;
+
 namespace CSharp_lab2.Managers
 {
     internal class NavigationManager
@@ -33,7 +34,7 @@ namespace CSharp_lab2.Managers
 
         internal void Navigate(ViewType viewType)
         {
-            _navigationModel.Navigae(viewType);
+            _navigationModel.Navigate(viewType);
         }
     }
 }

@@ -1,27 +1,23 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 using CSharp_lab2.ViewModels;
-using CSharp_lab2.Tools;
+using CSharp_lab2.Views;
+
+
 namespace CSharp_lab2
 {
     
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window, IContentOwner
+    public partial class MainWindow : Window
     {
-        private SignViewModel _viewModel;
+        
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = _viewModel = new SignViewModel();
-            
+            DataContext = new MainWindowViewModel();
         }
 
-        public ContentControl ContentControl
-        {
-            get { return _contentControl; }
-        }
 
     }
 }

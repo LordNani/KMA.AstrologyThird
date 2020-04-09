@@ -6,6 +6,6 @@ namespace CSharp_lab2.Tools
     internal interface ILoaderOwner : INotifyPropertyChanged
     {
         Visibility LoaderVisibility { get; set; }
-        bool isControlEnabled { get; set; }
+        bool IsControlEnabled { get; set; }
     }
 }

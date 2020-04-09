@@ -1,9 +1,10 @@
-﻿using System.Windows.Controls;
+﻿using CSharp_lab2.Navigation;
+using System.Windows.Controls;
 
 namespace CSharp_lab2.Tools
 {
     internal interface IContentOwner
     {
-        ContentControl ContentControl{get;}
+        INavigatable Content{ get; set; }
     }
 }

@@ -34,12 +34,12 @@ internal class LoaderManager
   internal void ShowLoader()
   {
     _loaderOwner.LoaderVisibility = Visibility.Visible;
-    _loaderOwner.isControlEnabled = false;
+    _loaderOwner.IsControlEnabled = false;
   }
   internal void HideLoader()
   {
     _loaderOwner.LoaderVisibility = Visibility.Hidden;
-    _loaderOwner.isControlEnabled = true;
+    _loaderOwner.IsControlEnabled = true;
   }
 }
 }
