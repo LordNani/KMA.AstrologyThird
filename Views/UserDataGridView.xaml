@@ -24,9 +24,9 @@
             AlternatingRowBackground="#f2f2f2"
             AutoGenerateColumns="False"
             HorizontalGridLinesBrush="DarkGray"
-            ItemsSource="{Binding Users}"
             RowBackground="#cdcdcd"
             SelectedItem="{Binding SelectedUser, Mode=TwoWay}">
+            <!--  ItemsSource="{Binding Users}"  -->
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="90"

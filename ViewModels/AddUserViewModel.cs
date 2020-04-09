@@ -6,7 +6,7 @@ using CSharp_lab2.Navigation;
 
 namespace CSharp_lab2.ViewModels
 {
-    class AddUserViewModel : BaseViewModel
+    internal class AddUserViewModel : BaseViewModel
     {
 
         public RelayCommand<object> _cancelCommand;

@@ -43,6 +43,7 @@ namespace CSharp_lab2.ViewModels
             LoaderManager.Instance.Initialize(this);
             NavigationManager.Instance.Initialize(new InitializationNavigationModel(this));
             NavigationManager.Instance.Navigate(ViewType.UserDataGridView);
+
         }
 
       

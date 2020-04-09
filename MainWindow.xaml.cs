@@ -14,8 +14,9 @@ namespace CSharp_lab2
         
         public MainWindow()
         {
-            InitializeComponent();
             DataContext = new MainWindowViewModel();
+            InitializeComponent();
+            
         }
 
 

@@ -12,8 +12,9 @@ namespace CSharp_lab2.Views
     {
         public UserDataGridView()
         {
-            InitializeComponent();
             DataContext = new UserDataGridViewModel();
+            InitializeComponent();
+            
         }
     }
 }

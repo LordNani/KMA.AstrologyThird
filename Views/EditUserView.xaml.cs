@@ -12,8 +12,9 @@ namespace CSharp_lab2.Views
     {
         public EditUserView()
         {
-            InitializeComponent();
             DataContext = new EditUserViewModel();
+            InitializeComponent();
+            
         }
     }
 }
